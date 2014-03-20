@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
 	 t.string "product_code"
 	 t.string "name"
-	 t.string "description"
+	 t.string "description", :limit => 500
 	 t.string "unit_price"
 	 t.string "default_img_url"
       t.timestamps

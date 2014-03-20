@@ -1,0 +1,7 @@
+  <div class="row">
+    <% @products.each do |product| %>
+        <div class="large-3 columns panel radius prodContainer" style="height: 400px"><img src=<%= product.default_img_url %> /><h2 class="prodTitle"><%= product.name %></h2><br><h3 class="prodUnitPrice">$<%= product.unit_price %></h3>
+        <%= link_to "View and Customize Item", product %>
+        </div>
+      <% end %>
+    </div>

@@ -1,0 +1,71 @@
+<div class="row">
+<h2>Checkout</h2>
+<dl class="accordion" data-accordion>
+  <dd>
+    <a href="#panel1">Review Your Items</a>
+    <div id="panel1" class="content active">
+	<table width="100%" id="checkout_container">
+	  <thead>
+	    <tr>
+	      <th>Thumbnail</th>
+	      <th>Product Code</th>
+	      <th>Product Name</th>
+	      <th>Quantity</th>
+	      <th>Unit Price</th>          
+	      <th>Sub Total</th> 
+	    </tr>
+	  </thead>
+	  <tbody>
+	<% @db_lines.each do |line| %>
+	<% product = Product.find_by_product_code(line['ProductCode']) %>
+    <tr>
+      <td><%= image_tag "#{line['preview_url']}&maxSize=135" %></td>
+      <td><%= line['ProductCode'] %></td>
+      <td><%= product.name %></td>
+      <td><%= line['Quantity'] %></td>
+      <td><%= number_to_currency(line['UnitPrice']) %></td>
+      <td><%= number_to_currency(line['Quantity'] * line['UnitPrice']) %>
+    </tr>	
+	<% end %>
+    <tr>
+      <td colspan="6"><%= link_to "Modify Items","/shoppingcart", class: 'tiny button radius' %></td>
+    </tr>
+  </tbody>
+</table>	
+    </div>
+  </dd>
+  <dd>
+    <a href="#panel2">Shipping and Billing Address</a>
+    <div id="panel2" class="content">
+    <div class="row">
+    <div class="large-6 columns">
+    <h3>Shipping Address</h3>
+	<%= @customer.sh_address1 %><br>
+	<%= @customer.sh_address2 %><br>
+	<%= @customer.sh_city %>, <%= @customer.sh_state %> <%= @customer.sh_zipcode %><br>
+	<%= link_to "Modify", '#', "data-reveal-id" => "modShAddr", :class => 'tiny button radius' %>
+    </div>
+    <div class="large-6 columns">
+    <h3>Billing Address</h3>
+	<%= @customer.bi_address1 %><br>
+	<%= @customer.bi_address2 %><br>
+	<%= @customer.bi_city %>, <%= @customer.bi_state %> <%= @customer.bi_zipcode %><br>
+	<%= link_to "Modify", '#', "data-reveal-id" => "modBiAddr", :class => 'tiny button radius' %>	    
+    </div>
+    </div>    
+    </div>
+  </dd>
+  <dd>
+    <a href="#panel3">Payment and Submit</a>
+    <div id="panel3" class="content">
+
+    </div>
+  </dd>
+</dl>
+<div id="modShAddr" class="reveal-modal" data-reveal>
+<%= render 'shared/shipping_addr_form' %>
+</div>
+<div id="modBiAddr" class="reveal-modal" data-reveal>
+<%= render 'shared/billing_addr_form' %>
+</div>
+</div>

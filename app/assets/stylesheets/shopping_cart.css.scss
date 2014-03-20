@@ -1,0 +1,22 @@
+// Place all the styles related to the ShoppingCart controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#shopping_cart_bar {
+	a, input[type="submit"] {
+		line-height: 20px;
+		font-size: .8em;
+		font-weight: 400 !important;
+		font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+	}
+}
+
+#shopping_cart_container {
+	th {
+		border-bottom: 1px solid #CCC;
+	}
+
+	td {
+		border-bottom: 1px solid #EfEFEF;
+	}
+}

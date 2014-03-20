@@ -63,3 +63,5 @@ gem 'carrierwave', '0.9.0'
 gem 'mini_magick'
 
 gem 'thin'
+
+gem 'rails_serve_static_assets'

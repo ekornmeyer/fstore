@@ -4,7 +4,7 @@
 
 
 header {
-	background: url('/assets/header_background.png') no-repeat center;
+	background: url('<%= asset_path("header_background.png") %>') no-repeat center;
 	background-color: #3498DB;
 	padding: 40px 0 40px 0;
 	border-bottom: 6px solid #2980B9;
